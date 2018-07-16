@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>
+            {% block page_title %}
+                My - Site
+            {% endblock %}
+        </title>
+        <meta charset = "utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+</html>

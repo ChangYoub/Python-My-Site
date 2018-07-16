@@ -1,0 +1,20 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+}
+
+.right {
+  margin-left: 80%;
+}
+
+@media(max-width:653px) {
+  .right {
+    margin-left: 55%;
+  }
+}
+
