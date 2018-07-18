@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Sign In Form -->
+<form id="signin" class="form-horizontal" method="post" action="{% url 'login_url' %}">
+    {% csrf_token %}
+    <div class="login center">
+        <!-- Username input -->
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div class="underline">
+                        <!-- {{ form.username.label_tag }} -->
+                        <label class="login" for="id_username">ID&nbsp;</label>            
+                        <!-- {{ form.username }} -->
+                        <input type="text" name="username" class="form-control login" required maxlength="254" id="id_username">
+                    </div>                
+            </div>
+        </div>
+
+    <!-- Password input -->
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+                <div class="underline">                
+                    <!-- {{ form.password.label_tag }} -->
+                    <label class="login" for="id_password">PW&nbsp;</label>
+                    <!-- {{ form.password }} -->
+                    <input type="password" name="password" class="form-control login" required id="id_password">
+                </div>
+                <span class="field-error">            
+                    {{ form.non_filed_eror|striptags }}            
+                </span>
+            </div>
+        </div>  
+        <br>
+        <!-- Sign in Button -->
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <input type="hidden" name="next" value="{{ next }}">
+                <center><button id="signin" name="signin" class="btn btn-block btn-defalut login" type="submit">
+                    Log In
+                </button></center>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="login">
+        <hr>
+        <center> Or <a href="{% url 'signup' %}"><u>sign up</u></a> if you don't have any account.</center>
+    </div>         
+</form>
+{% endblock %}

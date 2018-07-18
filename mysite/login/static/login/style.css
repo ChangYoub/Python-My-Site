@@ -1,0 +1,57 @@
+label.login {
+    display: inline-block;
+    font-size: 13px;
+    width: 30px;
+}
+
+input.login {
+    border: none;    
+}
+
+input.login:focus {
+    outline: none;
+}
+
+div.underline {
+    border-bottom: 1px solid black;
+    padding-top: 7px;
+    padding-bottom:5px; 
+    border-collapse : collapse;
+    /* 
+    width: 300px; 
+    
+    text-align: left;     */
+}
+
+div.login.center {
+    position: relative;
+    width: 300px;    
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+button.login {
+    border: 1px solid black;
+    background-color: white;
+    width: 300px;
+    height: 30px;  
+  }
+  
+  button.login:focus {
+    outline: none;
+  }
+  
+  button.login:hover {
+    text-decoration: underline;
+    cursor:pointer;
+  }
+
+#footer.login {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:60px;
+    width:100%;
+    background:#EE7785;
+    color: white;
+  }
