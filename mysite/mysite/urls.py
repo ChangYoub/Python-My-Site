@@ -15,11 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url
-from django.conf.urls import include
+from django.conf.urls import url, include
+from django.views.generic import TemplateView
+from login.forms import LoginForm
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    url(r'', include('main.urls')),    
-    url(r'', include('signup.urls')),    
+    url(r'', include('main.urls')),  
+    url(r'', include('signup.urls')), 
+    
+    url(r'login/$', 
+        auth_views.login,   
+        name='login_url', kwargs={'authentication_form': LoginForm,}),
+
+    url(r'logout/$', 
+        auth_views.logout,   
+        name='logout_url', kwargs={'next_page':'/login/',}),  
+
     path('admin/', admin.site.urls),
 ]

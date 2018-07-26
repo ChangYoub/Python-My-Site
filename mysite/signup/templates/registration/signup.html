@@ -1,67 +1,135 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+  <br>
+  <br>
+  <br>
+  <br>
+  <center>
+    <h1 style="font-size: 13px; font-weight: normal;">JOIN</h1>
+  </center>
   <!-- Sign Up Form -->
-  <form id="signup" class="form-horizontal" method="post" action="{% url 'signup' %}">
-    {% csrf_token %}
+  <form id="signup" class="form-horizontal" method="post" action="{% url 'signup' %}">      
+    {% csrf_token %}    
     <!-- Username input -->
-    <div class="row control-group">
-      <div class="form-group col-xs-12 floating-label-form-grop controls">
-        {{ signupform.username.label_tag }}
-        <!-- {{ signupform.username }} -->
-        <input type="text" name="username" class="form-contorl" placeholder="Username" required maxlength="30" autofocus id="id_username">
-        <span class="field-error">
-          {{ signupform.username.errors|striptags }}
-        </span>
-      </div>
-    </div>
-    
-    <!-- Email input -->
-    <div class="row control-group">
-      <div class="form-group col-xs-12 floating-label-group controls">
-        {{ signupform.email.label_tag }}
-        {{ signupform.email }}
-        <span class="field-error">
-          {{ signupform.email.error|striptags }}
-        </span>
-      </div>
-    </div>
+    <table class="signup">
+      <tr>
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-grop controls">                       
+            <th socpe="row">
+              <!-- {{ signupform.username.label_tag }} -->            
+              <label for="id_username">아이디</label>              
+            </th>               
+            <td>                
+              <!-- {{ signupform.username }} -->
+              <input type="text" name="username" class="form-control signup " required="" maxlength="30" autofocus="" id="id_username">                                                   
+              <button type="button" id="duplcheck" class="btn btn-default duplcheck">ID-Check</button><br>                           
+            </td>        
+            <span class="field-error">
+              {{ signupform.username.errors|striptags }}
+            </span>
+          </div>
+        </div>  
+      </tr>
+      <tr>
+        <!-- Password1 input -->
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <th socpe="row">
+              <!-- {{ signupform.password1.label_tag }} -->
+              <label for="id_password1">비밀번호</label>
+            </th>
+            <td>
+              <!-- {{ signupform.password1 }} -->
+              <input type="password" name="password1" class="form-control signup" required="" id="id_password1">
+            </td>
+            <span class="field-error">
+              {{ signupform.password1.errors|striptags }}
+            </span>
+          </div>
+        </div>
+      </tr>
+      <tr>
+        <!-- Password2 input -->
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-form-group controls">
+            <th socpe="row">
+              <!-- {{ signupform.password2.label_tag }} -->
+              <label for="id_password2">비밀번호 확인</label>
+            </th>
+            <td>
+              <!-- {{ signupform.password2 }} -->
+              <input type="password" name="password2" class="form-control signup" required="" id="id_password2">
+            </td>
+            <span class="field-error">
+                {{ signupform.password2.errors|striptags }}
+            </span>
+          </div>
+        </div>
+      </tr>
+      <tr>
+        <!-- Email input -->
+        <div class="row control-group">
+          <div class="form-group col-xs-12 floating-label-group controls">
+            <th scope="row">
+              <!-- {{ signupform.email.label_tag }} -->        
+              <label for="id_emil">Email</label>
+            </th>
+            <td>
+              <!-- {{ signupform.email }} -->
+              <input type="email" name="email" class="form-control signup" required="" id="id_email">
+            </td>
+            <span class="field-error">
+              {{ signupform.email.error|striptags }}
+            </span>
+          </div>
+        </div>
+      </tr>
+      <tr>
+        <th scope="row">          
+          <label for="id_name">이름</label>
+        </th>
+        <td>          
+          <input type="text" name="name" class="signup" id='id_name'>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">          
+          <label>주소</label>
+        </th>
+        <td>          
+          <input type="text" class="signup post" style="margin-bottom: 5px;" maxlength="14">    
 
-    <!-- Password1 input -->
-    <div class="row control-group">
-      <div class="form-group col-xs-12 floating-label-form-group controls">
-        {{ signupform.password1.label_tag }}
-        {{ signupform.password1 }}
-        <span class="field-error">
-          {{ signupform.password1.errors|striptags }}
-        </span>
-      </div>
-    </div>
+          <a onclick="showDiv('zipcodeLayer')" class="signup" id="postBtn">Zip Code</a>             
+          <div id="zipcodeLayer" class="zipcodeLayer">            
+            <iframe src="/static/templates/zipcode.html" class="zipcodeLayer" frameborder="0" />
+            </iframe>
+         </div>      
 
-    <!-- Password2 input -->
-    <div class="row control-group">
-      <div class="form-group col-xs-12 floating-label-form-group controls">
-        {{ signupform.password2.label_tag }}
-        {{ signupform.password2 }}
-        <span class="field-error">
-          {{ signupform.password2.errors|striptags }}
-        </span>
-      </div>
-    </div>
+          <br>
+          <input type="text" name="address1" class="signup" style="margin-bottom: 5px;">
+          <br>
+          <input type="text" name="address2" class="signup">
+        </td>
+      </tr>
+  </table>             
 
-    <br>
-    <!-- Button -->
-    <div class="row">
-      <div class="form-group col-xs-12">
-        <button id="signup" name="signup" class="btn btn-block btn-default" type="submit">Signup</button>
-        <hr>
-        <center>
-          Or <a hrep=""><u>log in</u></a>
-          if you have an account.
-        </center>
-      </div>
+  <br>
+  <!-- Button -->
+  <div class="row">
+    <div class="form-group col-xs-12">
+      <center>
+        <button id="signup" class="signup" name="signup" type="submit">SUBMIT</button>
+      </center>
+      <br>      
+      <div id="footer" class="signup">
+          <hr>
+          <center>
+              Or <a hrep=""><u>log in</u></a>
+              if you have an account.
+          </center>
+      </div>      
     </div>
-    
-  </form>
+</form>
+</div>
 {% endblock %}
-<!-- {% url 'login_url' %} -->

@@ -9,10 +9,28 @@ a.right {
   float: right;
 }
 
+a.left {
+  display: inline-table;
+  float: left;
+  margin-left: 2%;
+}
+
 div.right {
   display: inline-table;
   float: right; 
   margin-right: 10px;
+  padding-bottom: 6px; 
 }
 
+label.main {
+  color: gray;
+}
 
+body {
+  font-family: "NanumGothic", Nanum Gothic, 나눔고딕, Dotum;
+  -ms-user-select: none; 
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
