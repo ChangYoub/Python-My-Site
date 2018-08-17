@@ -4,17 +4,74 @@
         <title>Zip Code Search</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="/static/signup/style.css" /> 
-        <link rel="stylesheet" type="text/css" href="/static/signup/zipcode.css" /> 
+        <link rel="stylesheet" type="text/css" href="/static/signup/zipcode.css" />                     
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>    
+        <script type="text/javascript" src="/static/js/join.js"></script>                        
     </head>
-    <body>
+    <body>        
         <div class="ziplayer">
             <h1 class="zipcode">우편번호 검색</h1>
-            <a>
-                <img src="/static/img/close_btn.png" alt="닫기" class="zipcode">
-            </a>
-        </div>
+            <img src="/static/img/close_btn.png" alt="닫기" class="zipcode" onclick="parent.$('#zipcodeLayer').remove();">
+        </div>       
+        <div style="display: block; margin: 20px;">
+            <table border="1" summary>
+                <tr>
+                    <th scope="row">지번/도로명</th>
+                    <td>
+                        <input id="zipCodeKey" class="fText" type= "text" name='zipCode' onkeyup="enterkey(event);">
+                        <button id="zipCodeSearchBtn" class="searchBtn" type="button">검색</button>
+                        <p class="textInfo">도로명+건물번호(예:테헤란로5) | 읍/면/동/리+지번(예:서린동154)</p>
+                    </td>
+                </tr>
+            </table>
+            <div id=zboo_panel_sido style="margin-top: 20px;"></div>
+            <div id="addressList" class="addressList">
+                <div class="resultList">
+                    <table id="result_table" border="1" summary>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <p id="search_address_list" class="empty">찾으실 지번 주소 혹은 도로명주소를 검색해 주세요</p>
+            </div>
+            <div class="paginate">
+                <button id="left_arrow_btn" class="left_arrow_btn" type="button" style="display: none;"><img src="/static/img/left_arrow_btn.png" style=" width: 10px; height: 10px;"></button>
+                <ol id='zbook_ol' style='display: inline-block; padding: 0px;'></ol>
+                <button id="right_arrow_btn" class="right_arrow_btn" type="button" style="display: none;"><img src="/static/img/right_arrow_btn.png" style=" width: 10px; height: 10px;"></button>
+            </div>                                  
+        </div>                    
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <head>

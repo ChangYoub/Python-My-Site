@@ -1,6 +1,11 @@
 body {
     margin: 0;
     font: 0.75em "돋움",Dotum,AppleGothic,sans-serif;
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 div.ziplayer {
@@ -32,3 +37,222 @@ img.zipcode {
 img.zipcode:hover {
     cursor:pointer;             
 }
+
+button.tablinks {   
+    float: left;
+    width: 50%;
+    height: 40px;
+    background-color: #f3f3f3;
+    border: 1px solid #d7d7d7;
+    border-bottom: 1px solid #666;
+    color: #777;    
+    font-weight: bold;
+}
+
+button.tablinks.active  {   
+    float: left;
+    width: 50%;
+    height: 40px;
+    background-color: white;
+    border: 1px solid black;
+    border-bottom: none;
+    color: black;
+    font-weight: bold;
+}
+
+button.tablinks:focus {
+    outline: none;
+}
+
+button.tablinks:hover {
+    cursor:pointer;
+}
+
+table {
+    width: 100%;
+    /* border: 0; */
+    border-spacing: 0;
+    border-collapse: collapse;
+    border: 1px solid #d7d7d7;
+    line-height: 1.5;
+    background-color: #fff;
+    /* border: 1px solid #e9e9e9; */
+}
+
+th {
+    border: 0;
+    padding: 10px 9px;
+    width: 80px;
+    vertical-align: middle;
+    font-weight: normal;
+    color: #777;
+    background-color: #f5f5f5;
+}
+
+td {
+    position: relative;
+    padding: 10px 80px 10px 9px;
+    vertical-align: middle;    
+    border: none;
+}
+
+.fText {
+    margin: 0;
+    height: 30px;
+    width: 100%;
+    padding: 2px 10px;
+    line-height: 24px;
+    border: 1px solid #c5c5c5;
+    border-right-color: #e9e9e9;
+    border-bottom-color: #e9e9e9;
+    outline: none;
+    font-size: 11px;
+    font-family: dotum,'돋움',sans-serif;
+    color: #1b1b1b;
+    vertical-align: middle;
+    font-weight: normal;
+    background: #fff;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.textInfo {
+    padding: 0;
+    margin: 9px 0 0 3px;
+    font-size: 11px;
+    color: #747474;
+    letter-spacing: -0.05em;
+}
+
+button.searchBtn {
+    width: 60px;
+    height: 29px;
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background-color: #2C2C2C;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+button.searchBtn:focus {
+    outline: none;
+}
+
+button.searchBtn:hover {
+    cursor:pointer;
+}
+
+.addressList{    
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 365px;
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+}
+
+.empty {
+    margin: 0;
+    padding: 185px 0;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.icoStreet {
+    padding: 3px;    
+    background-color: #6293d7;
+    color: white;
+    margin-right: 10px;
+}
+
+.icoNumber {
+    padding: 3px;    
+    padding-left: 9px;   
+    padding-right: 9px;   
+    background-color: #9D9D9D;
+    color: white;
+    margin-right: 10px;
+}
+
+#result_table {
+    border: none;
+}
+
+td.result_table {
+    padding-right: 0px;
+    padding-top: 0;
+    border: none;
+    border-bottom: 1px dotted #c5c5c5;
+}
+
+td.right {      
+    border: none;
+    border-bottom: 1px dotted #c5c5c5;
+    padding: 0px;
+    padding-right: 10px;
+}
+
+div.paginate {
+    display: block;
+    text-align: center;
+}
+
+li {
+    list-style: none;
+    display: inline-block;  
+    padding: 5px;      
+}
+
+a:hover {
+    cursor:pointer;
+}
+
+span.painate_number {
+    font-weight: bold; 
+    font-size: 12px; 
+    font-family: Tahoma, sans-serif;    
+}
+
+button.right_arrow_btn {
+    width: 20px;
+    height: 18px;
+    padding: 0px;
+    padding-top: 1px;
+    background-color: Transparent;
+    cursor: pointer;    
+    outline: none;
+    border: 1px solid #DDDDDD;
+    margin-left: 10px;    
+}
+
+button.left_arrow_btn {
+    width: 20px;
+    height: 18px;
+    padding: 0px;
+    padding-top: 1px;
+    background-color: Transparent;
+    cursor: pointer;    
+    outline: none;
+    border: 1px solid #DDDDDD;
+    margin-right: 10px;    
+}
+
+/* color:  */
+/* 
+thead {    
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+th {
+    font-weight: bold;
+    text-align: -internal-center;
+} */
+

@@ -22,8 +22,8 @@
             </th>               
             <td>                
               <!-- {{ signupform.username }} -->
-              <input type="text" name="username" class="form-control signup " required="" maxlength="30" autofocus="" id="id_username">                                                   
-              <button type="button" id="duplcheck" class="btn btn-default duplcheck">ID-Check</button><br>                           
+              <input id="id_username" class="form-control signup " type="text" name="username"  required="" maxlength="30" autofocus="">                                                   
+              <button id="duplcheck" class="btn btn-default duplcheck" type="button" >ID-Check</button><br>                           
             </td>        
             <span class="field-error">
               {{ signupform.username.errors|striptags }}
@@ -41,7 +41,7 @@
             </th>
             <td>
               <!-- {{ signupform.password1 }} -->
-              <input type="password" name="password1" class="form-control signup" required="" id="id_password1">
+              <input id="id_password1" class="form-control signup" type="password" name="password1"  required="">
             </td>
             <span class="field-error">
               {{ signupform.password1.errors|striptags }}
@@ -59,7 +59,7 @@
             </th>
             <td>
               <!-- {{ signupform.password2 }} -->
-              <input type="password" name="password2" class="form-control signup" required="" id="id_password2">
+              <input id="id_password2" class="form-control signup" type="password" name="password2" required="" >
             </td>
             <span class="field-error">
                 {{ signupform.password2.errors|striptags }}
@@ -90,7 +90,7 @@
           <label for="id_name">이름</label>
         </th>
         <td>          
-          <input type="text" name="name" class="signup" id='id_name'>
+          <input id='id_name' class="signup" type="text" name="name">
         </td>
       </tr>
       <tr>
@@ -98,18 +98,12 @@
           <label>주소</label>
         </th>
         <td>          
-          <input type="text" class="signup post" style="margin-bottom: 5px;" maxlength="14">    
-
-          <a onclick="showDiv('zipcodeLayer')" class="signup" id="postBtn">Zip Code</a>             
-          <div id="zipcodeLayer" class="zipcodeLayer">            
-            <iframe src="/static/templates/zipcode.html" class="zipcodeLayer" frameborder="0" />
-            </iframe>
-         </div>      
-
+          <input class="signup post" type="text" style="margin-bottom: 5px;" maxlength="14">              
+          <a id="zipcodeBtn" class="signup" onclick='createZipcodeFrame(this);'>Zip Code</a>             
           <br>
-          <input type="text" name="address1" class="signup" style="margin-bottom: 5px;">
+          <input class="signup" type="text" name="address1"  style="margin-bottom: 5px;">
           <br>
-          <input type="text" name="address2" class="signup">
+          <input class="signup" type="text" name="address2">
         </td>
       </tr>
   </table>             

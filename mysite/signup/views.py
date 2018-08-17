@@ -6,9 +6,15 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse    # ajax
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from django.http import HttpResponse
 
 from signup.forms import SignupForm
 from signup.models import Profile
+import urllib
+from urllib import request
+from xml.etree import ElementTree
+import json, xmljson
+import xmltodict
 
 #pylint: disable=E1101
 def signup(request):
@@ -24,7 +30,6 @@ def signup(request):
             Profile.objects.create(user=user, name=request.POST.get('name'))
             return HttpResponseRedirect("signup_ok")
             # return HttpResponseRedirect(reverse("signup_ok"))
-
     elif request.method == "GET":    
         signupform = SignupForm()   
 
@@ -37,3 +42,25 @@ class DuplicationCheck(View):
             'is_taken': User.objects.filter(username__iexact=username).exists()
         }
         return JsonResponse(data)
+
+def search_address(request):
+    query = request.GET.get('zipCode', None)
+    currentPage = request.GET.get('currentPage', None)
+    query=query.encode('euc-kr')    
+    url = "http://biz.epost.go.kr/KpostPortal/openapi?"
+    values = {"regkey":"ee164fd5f10417fcd1533888738117",
+              "target":"postNew",
+              "query":query,
+              "countPerPage":15,
+              "currentPage":currentPage}
+    # currentPage=1
+    var = urllib.parse.urlencode(values).encode('utf-8')    
+    req = urllib.request.Request(url, var)
+ 
+    req.add_header('accept-language', 'ko')  
+    response = urllib.request.urlopen(req)
+    r = response.read()
+    root = ElementTree.fromstring(r)   
+    jsons = json.dumps(xmljson.badgerfish.data(root))   
+
+    return HttpResponse(jsons)

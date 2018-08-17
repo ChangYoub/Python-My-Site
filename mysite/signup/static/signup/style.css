@@ -105,7 +105,6 @@ a.signup:hover {
 }
 
 div.zipcodeLayer {
-  display: none;
   position: absolute;
   left: 41%; 
   width: 600px; 
