@@ -7,9 +7,10 @@
   <br>
   <center>
     <h1 style="font-size: 13px; font-weight: normal;">JOIN</h1>
-  </center>
+    <h1 >{{ message }}</h1>
+  </center>  
   <!-- Sign Up Form -->
-  <form id="signup" class="form-horizontal" method="post" action="{% url 'signup' %}">      
+  <form id="signup" class="form-horizontal" method="post" action="{% url 'signup' %}">            
     {% csrf_token %}    
     <!-- Username input -->
     <table class="signup">
@@ -18,15 +19,30 @@
           <div class="form-group col-xs-12 floating-label-form-grop controls">                       
             <th socpe="row">
               <!-- {{ signupform.username.label_tag }} -->            
-              <label for="id_username">아이디</label>              
+              <label for="id_username">아이디</label> 
+              <span style="color: red; font-weight: bold; font-size: 15px;"> *</span>             
             </th>               
             <td>                
-              <!-- {{ signupform.username }} -->
-              <input id="id_username" class="form-control signup " type="text" name="username"  required="" maxlength="30" autofocus="">                                                   
-              <button id="duplcheck" class="btn btn-default duplcheck" type="button" >ID-Check</button><br>                           
+              {% if signupform.username.value == None %}   
+                <input id="id_username" class="form-control signup" type="text" name="username" maxlength="30" autofocus="" required=""/>
+              {% else %}
+                <input value="{{signupform.username.value}}" id="id_username" class="form-control signup" type="text" name="username" maxlength="30" autofocus="" required=""/>
+              {% endif %}
+              <button id="duplcheck" class="btn btn-default duplcheck" type="button" >ID-Check</button>              
+              <span style="white-space:nowrap;">(영문소문자/숫자, 4~16자)</span>
+              <br>                                         
             </td>        
             <span class="field-error">
-              {{ signupform.username.errors|striptags }}
+              <!-- {{ signupform.username.errors|striptags }} -->
+              {% if signupform.username.errors %}
+                <span id="username_error" style="display: none;">{{ signupform.username.errors|striptags }}</span>                         
+                <script type="text/javascript" charset="utf-8">                 
+                  $(window).on("load", function(){                    
+                    alert($('#username_error').text()); 
+                    $('#id_username').focus();
+                  });            
+                </script> 
+              {% endif %}
             </span>
           </div>
         </div>  
@@ -38,15 +54,16 @@
             <th socpe="row">
               <!-- {{ signupform.password1.label_tag }} -->
               <label for="id_password1">비밀번호</label>
+              <span style="color: red; font-weight: bold; font-size: 15px;"> *</span>
             </th>
             <td>
               <!-- {{ signupform.password1 }} -->
-              <input id="id_password1" class="form-control signup" type="password" name="password1"  required="">
-            </td>
-            <span class="field-error">
-              {{ signupform.password1.errors|striptags }}
-            </span>
-          </div>
+              <input id="id_password1" class="form-control signup" type="password" name="password1" required="" />
+              <span style="white-space:nowrap;">(영문 대소문자/숫자 4자~16자)</span>
+            </td>            
+            <span class="field-error">                    
+              {{ signupform.password1.errors|striptags }}              
+            </span>            
         </div>
       </tr>
       <tr>
@@ -56,64 +73,301 @@
             <th socpe="row">
               <!-- {{ signupform.password2.label_tag }} -->
               <label for="id_password2">비밀번호 확인</label>
+              <span style="color: red; font-weight: bold; font-size: 15px;"> *</span>
             </th>
             <td>
               <!-- {{ signupform.password2 }} -->
-              <input id="id_password2" class="form-control signup" type="password" name="password2" required="" >
+              <input id="id_password2" class="form-control signup" type="password" name="password2" required="" />
             </td>
-            <span class="field-error">
-                {{ signupform.password2.errors|striptags }}
+            <span class="field-error">              
+              <!-- {{ signupform.password2.errors|striptags }} -->
+              {% if signupform.password2.errors %}
+                <span id="pw2_error" style="display: none;">{{ signupform.password2.errors|striptags }}</span>                         
+                <script type="text/javascript" charset="utf-8">                  
+                  $(window).on("load", function(){                      
+                    alert($('#pw2_error').text()); 
+                    $('#id_password1').focus();
+                  });            
+                </script> 
+              {% endif %}                            
             </span>
           </div>
         </div>
-      </tr>
+      </tr>      
       <tr>
-        <!-- Email input -->
-        <div class="row control-group">
-          <div class="form-group col-xs-12 floating-label-group controls">
-            <th scope="row">
-              <!-- {{ signupform.email.label_tag }} -->        
-              <label for="id_emil">Email</label>
-            </th>
-            <td>
-              <!-- {{ signupform.email }} -->
-              <input type="email" name="email" class="form-control signup" required="" id="id_email">
-            </td>
-            <span class="field-error">
-              {{ signupform.email.error|striptags }}
-            </span>
-          </div>
-        </div>
-      </tr>
-      <tr>
-        <th scope="row">          
+        <th scope="row">            
           <label for="id_name">이름</label>
+          <span style="color: red; font-weight: bold; font-size: 15px;"> *</span>
         </th>
-        <td>          
-          <input id='id_name' class="signup" type="text" name="name">
+        <td> 
+          {% if profileForm.name.value == None %} 
+            <input id='id_name' class="signup" type="text" name="name" required=""/>
+          {% else %}
+          <input value="{{ profileForm.name.value }}"id='id_name' class="signup" type="text" name="name" required/>
+          {% endif %}
         </td>
       </tr>
       <tr>
         <th scope="row">          
           <label>주소</label>
+          <span style="color: red; font-weight: bold; font-size: 15px;"> *</span>
         </th>
         <td>          
-          <input class="signup post" type="text" style="margin-bottom: 5px;" maxlength="14">              
-          <a id="zipcodeBtn" class="signup" onclick='createZipcodeFrame(this);'>Zip Code</a>             
+          {% if profileForm.zipcode.value == None %}
+            <input id="zipcode" class="signup post" name="zipcode" type="text" style="margin-bottom: 5px;" maxlength="5" readonly/>              
+          {% else %}
+            <input value="{{ profileForm.zipcode.value }}" id="zipcode" class="signup post" name="zipcode" type="text" style="margin-bottom: 5px;" maxlength="5" readonly/>              
+          {% endif %}
+          <a id="zipcodeBtn" class="signup" onclick="createZipcodeFrame(this);">Zip Code</a>             
           <br>
-          <input class="signup" type="text" name="address1"  style="margin-bottom: 5px;">
+          {% if profileForm.address1.value == None %}
+            <input id="address1" class="signup address1" type="text" name="address1" maxlength="50" readonly />
+          {% else %}
+            <input value="{{ profileForm.address1.value }}" id="address1" class="signup address1" type="text" name="address1" maxlength="50" readonly />
+          {% endif %}
+          <span style="white-space:nowrap;">기본주소</span>
           <br>
-          <input class="signup" type="text" name="address2">
+          {% if profileForm.address2.value == None %}
+            <input class="signup address2" type="text" name="address2" maxlength="50" required>
+          {% else %}
+            <input value="{{ profileForm.address2.value }}" class="signup address2" type="text" name="address2" maxlength="50" required>
+          {% endif %}
+          <span style="white-space: nowrap;">나머지 주소</span>
         </td>
       </tr>
-  </table>             
+      <tr>
+        <th scope="row">          
+          <label>일반전화</label>
+          <span style="color: red; font-weight: bold; font-size: 15px;"> *</span>
+        </th>
+        <td> 
+          {% if profileForm.phone.value == None %}             
+            <input id='phone' name='phone' style='display: none;'/>
+          {% else %}            
+            <input id='phone' name='phone' value= '{{ profileForm.phone.value }}' style='display: none;'/>
+            <script>
+                $(window).on("load", function(){                            
+                  var phone = document.getElementById('phone').value;
+                  var array = phone.split('-');
+                  document.getElementById('phone1').value = array[0];
+                  document.getElementById('phone2').value = array[1];                      
+                  document.getElementById('phone3').value = array[2];            
+                })
+            </script>  
+          {% endif %}          
+          <select id='phone1' class='signup'>
+            <option value="02">02</option>    <!-- 서울특별시 -->
+            <option value="031">031</option>  <!-- 경기도 -->
+            <option value="032">032</option>  <!-- 인천광역시, 경기도 부천시 -->
+            <option value="033">033</option>  <!-- 강원도 -->
+            <option value="041">041</option>  <!-- 충청남도 -->
+            <option value="042">042</option>  <!-- 대전광역시 -->
+            <option value="043">043</option>  <!-- 충청북도 -->
+            <option value="051">051</option>  <!-- 부산광역시 -->
+            <option value="052">052</option>  <!-- 울산광역시 -->
+            <option value="053">053</option>  <!-- 대구광역시 -->
+            <option value="054">054</option>  <!-- 경상북도 -->
+            <option value="055">055</option>  <!-- 경상남도 -->
+            <option value="061">061</option>  <!-- 전라남도 -->
+            <option value="062">062</option>  <!-- 광주광역시 -->
+            <option value="063">063</option>  <!-- 전라북도 -->
+            <option value="064">064</option>  <!-- 제주도 -->
+            <option value="0502">0502</option>  
+            <option value="0503">0503</option>  
+            <option value="0504">0504</option>  
+            <option value="0505">0504</option>  
+            <option value="0506">0506</option>
+            <option value="0507">0507</option>
+            <option value="070">070</option>
+            <option value="010">010</option>
+            <option value="011">011</option>
+            <option value="016">016</option>
+            <option value="017">017</option>
+            <option value="018">018</option>
+            <option value="019">019</option>
+          </select>  
+          -    
+          <input id="phone2" class="phone" type="text" maxlength="4"/ required>
+          -    
+          <input id="phone3" class="phone" type="text" maxlength="4"/ required>     
+          <script>     
+              $('#signup').submit(function(e){
+                var phone1 = document.getElementById('phone1').value;
+                var phone2 = document.getElementById('phone2').value;
+                var phone3 = document.getElementById('phone3').value;
+                var phone = phone1 + '-' + phone2 + '-' + phone3;
+                document.getElementById('phone').value = phone;
+              });
+          </script>
+        </td>
+      </tr>
+      <tr>
+          <th scope="row">          
+            <label>휴대전화</label>
+            <span style="color: red; font-weight: bold; font-size: 15px;"> *</span>
+          </th>
+          <td>   
+            {% if profileForm.mobile.value == None %}             
+              <input id='mobile' name='mobile' style='display: none;'/>
+            {% else %}            
+              <input id='mobile' name='mobile' value= '{{ profileForm.mobile.value }}' style='display: none;'/>
+              <script>
+                  $(window).on("load", function(){                            
+                    var phone = document.getElementById('mobile').value;
+                    var array = phone.split('-');
+                    document.getElementById('mobile1').value = array[0];
+                    document.getElementById('mobile2').value = array[1];                      
+                    document.getElementById('mobile3').value = array[2];            
+                  })
+              </script>  
+            {% endif %}  
+            <select id="mobile1" class="signup">
+              <option value="010">010</option>
+              <option value="011">011</option>
+              <option value="016">016</option>
+              <option value="017">017</option>
+              <option value="018">018</option>
+              <option value="019">019</option>
+            </select>  
+            -    
+            <input id="mobile2" class="phone" type="text" maxlength="4"/>
+            -    
+            <input id="mobile3" class="phone" type="text" maxlength="4"/>
+            <script>     
+                $('#signup').submit(function(e){
+                  var phone1 = document.getElementById('mobile1').value;
+                  var phone2 = document.getElementById('mobile2').value;
+                  var phone3 = document.getElementById('mobile3').value;
+                  var phone = phone1 + '-' + phone2 + '-' + phone3;
+                  document.getElementById('mobile').value = phone;
+                });
+            </script>
+          </td>
+        </tr>
+        <tr>
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-grop controls">                       
+              <th socpe="row">                           
+                <label>SMS 수신여부</label>  
+                <span style="color: red; font-weight: bold; font-size: 15px;"> *</span>                            
+              </th>               
+              <td>         
+                <!-- {{ profileForm.sms_receive }} -->
+                {% if profileForm.sms_receive.value == False %}                     
+                  <input id="is_sms" name="is_sms" type="checkbox" value="False" style=" position: relative; top: 2px; left: 2px;"/> 
+                {% else %}
+                  <input id="is_sms" name="is_sms" type="checkbox" value="True" style=" position: relative; top: 2px; left: 2px;" checked/>                   
+                {% endif %}
+                <label class="signup" for="is_sms">동의함</label>   
+                <p style="margin: 0px; margin-top: 8px;">쇼핑몰에서 제공하는 유익한 이벤트 소식을 SMS로 받으실 수 있습니다.</p>             
+                <script>
+                   
+                </script>
+              </td>        
+              <span class="field-error">
+              </span>
+            </div>
+          </div>  
+        </tr>
+        <tr>
+          <!-- Email input -->
+          <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-group controls">
+              <th scope="row">
+                <!-- {{ signupform.email.label_tag }} -->
+                <label for="id_emil">Email</label>
+                <span style="color: red; font-weight: bold; font-size: 15px;"> *</span>
+              </th>
+              <td>                  
+                  <!-- {{ signupform.email }} -->               
+                  {% if signupform.email.value == None %}                    
+                    <input id="id_email" name="email" type="email"  maxlength="254"  style="display: none;">
+                    <input id="id_email_temp" class="form-control signup" required/>                    
+                  {% else %}        
+                    <input id="id_email" name="email" type="email" maxlength="254"  style="display: none;" value="{{ signupform.email.value }}">
+                    <script>
+                        $(window).on("load", function(){                            
+                          var email = document.getElementById('id_email').value;
+                          var array = email.split('@');
+                          document.getElementById('id_email_temp').value = array[0];
+                          document.getElementById('id_email_domain').value = array[1];                      
+                        })
+                    </script>            
+                    <input  id="id_email_temp" class="form-control signup" required />                                   
+                  {% endif %}
+                  @
+                  <input id="id_email_domain" class="form-control signup" required/>             
+                  <select id="domain_select" class="signup email" onchange="domainChange(this)">
+                      <option value selected="selected">- select -</option>
+                      <option value="naver.com">naver.com</option>
+                      <option value="daum.net">daum.net</option>
+                      <option value="nete.com">nete.com</option>
+                      <option value="gmail.com">gmail.com</option>
+                      <option value="hotmail.com">hotmail.com</option>
+                      <option value="yahoo.com">yahoo.com</option>
+                      <option value="empas.com">empas.com</option>
+                      <option value="korea.com">korea.com</option>
+                      <option value="dreamwiz.com">dreamwiz.com</option>                      
+                  </select>  
+                  <script>     
+                      function domainChange(self) {
+                        document.getElementById('id_email_domain').value = self.options[self.selectedIndex].value;
+                        if(self.selectedIndex == 0) {
+                          document.getElementById('id_email_domain').readOnly = false;
+                        }
+                        else {
+                          document.getElementById('id_email_domain').readOnly = true;
+                        }
+                      }
 
-  <br>
+                      $('#signup').submit(function(event){
+                        var id_email = document.getElementById('id_email_temp').value;
+                        var email_domain = document.getElementById('id_email_domain').value;
+                        var email = id_email + '@' + email_domain;
+                        document.getElementById('id_email').value = email;
+                      });
+                  </script>
+                </td>                
+                <span class="field-error">
+                  {{ signupform.email.error|striptags }}
+                  <!-- {% if signupform.email.error %}
+                  <script>
+                    console.log('error');
+                  </script>
+                  {% endif %} -->
+                </span>                
+              </div>
+            </div>
+          </tr>   
+          <tr>
+            <div class="row control-group">
+              <div class="form-group col-xs-12 floating-label-form-grop controls">                       
+                <th socpe="row">                           
+                  <label>이메일 수신여부</label>  
+                  <span style="color: red; font-weight: bold; font-size: 15px;"> *</span>                            
+                </th>               
+                <td>             
+                  {% if profileForm.email_receive.value == False %}                  
+                    <input id="is_email" name="is_email" type="checkbox" value="False" style="position: relative; top: 2px; left: 2px;" unchecked/> 
+                  {% else %}
+                    <input id="is_email" name="is_email" type="checkbox" value="True" style="position: relative; top: 2px; left: 2px;" checked/> 
+                  {% endif %}
+                    <label class="signup" for="is_email">동의함</label>   
+                    <p style="margin: 0px; margin-top: 8px;">쇼핑몰에서 제공하는 유익한 이벤트 소식을 이메일로 받으실 수 있습니다.</p>             
+                </td>        
+                <span class="field-error">
+                </span>
+              </div>
+            </div>  
+          </tr>
+          <tr>
+  </table>            
+  <br>  
   <!-- Button -->
   <div class="row">
     <div class="form-group col-xs-12">
       <center>
-        <button id="signup" class="signup" name="signup" type="submit">SUBMIT</button>
+        <button id="submitBtn" class="signup" name="signup" type="submit">SUBMIT</button>
       </center>
       <br>      
       <div id="footer" class="signup">
@@ -123,7 +377,7 @@
               if you have an account.
           </center>
       </div>      
-    </div>
+    </div>   
 </form>
 </div>
 {% endblock %}

@@ -9,31 +9,43 @@ from django.db import transaction
 from django.http import HttpResponse
 
 from signup.forms import SignupForm
+from signup.forms import ProfileForm
 from signup.models import Profile
 import urllib
 from urllib import request
 from xml.etree import ElementTree
 import json, xmljson
-import xmltodict
 
 #pylint: disable=E1101
 def signup(request):
     """signup
     to register users
-    """    
+    """        
     if request.method == "POST":        
-        signupform = SignupForm(request.POST)     
-        if signupform.is_valid():  
-            user = signupform.save(commit=False)
-            user.email = signupform.cleaned_data['email']
-            user.save()                     
-            Profile.objects.create(user=user, name=request.POST.get('name'))
-            return HttpResponseRedirect("signup_ok")
-            # return HttpResponseRedirect(reverse("signup_ok"))
+        signupform = SignupForm(request.POST)  
+        profileForm = ProfileForm(request.POST)  
+        if signupform.is_valid() and profileForm.is_valid():           
+            user = signupform.save(commit=False)            
+            user.email = signupform.cleaned_data['email']    
+            user.save()                  
+            print(request.POST.get('is_email'))
+            Profile.objects.create(user=user, 
+                                   name=request.POST.get('name'), 
+                                   zipcode=request.POST.get('zipcode'), 
+                                   address1=request.POST.get('address1'),
+                                   address2=request.POST.get('address2'),
+                                   is_sms=request.POST.get('is_sms'),
+                                   phone=request.POST.get('phone'),
+                                   mobile=request.POST.get('mobile'),
+                                   is_email=request.POST.get('is_email'))
+            return HttpResponseRedirect("signup_ok")  
+        else:
+            print('error')
     elif request.method == "GET":    
-        signupform = SignupForm()   
+        signupform = SignupForm()
+        profileForm = ProfileForm(request.POST) 
 
-    return render(request, "registration/signup.html", {"signupform":signupform,})
+    return render(request, "registration/signup.html", {"signupform":signupform, "profileForm":profileForm,})
 
 class DuplicationCheck(View):
     def post(self, request):                
@@ -41,6 +53,7 @@ class DuplicationCheck(View):
         data = {
             'is_taken': User.objects.filter(username__iexact=username).exists()
         }
+
         return JsonResponse(data)
 
 def search_address(request):

@@ -8,7 +8,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>    
         <script type="text/javascript" src="/static/js/join.js"></script>                        
     </head>
-    <body>        
+    <body>    
         <div class="ziplayer">
             <h1 class="zipcode">우편번호 검색</h1>
             <img src="/static/img/close_btn.png" alt="닫기" class="zipcode" onclick="parent.$('#zipcodeLayer').remove();">
@@ -20,11 +20,10 @@
                     <td>
                         <input id="zipCodeKey" class="fText" type= "text" name='zipCode' onkeyup="enterkey(event);">
                         <button id="zipCodeSearchBtn" class="searchBtn" type="button">검색</button>
-                        <p class="textInfo">도로명+건물번호(예:테헤란로5) | 읍/면/동/리+지번(예:서린동154)</p>
+                        <p class="textInfo">도로명+건물번호 (예: 도움5로 19) | 읍/면/동/리+지번 (예: 어진동 307-19)</p>
                     </td>
                 </tr>
-            </table>
-            <div id=zboo_panel_sido style="margin-top: 20px;"></div>
+            </table>            
             <div id="addressList" class="addressList">
                 <div class="resultList">
                     <table id="result_table" border="1" summary>
@@ -37,8 +36,11 @@
                 <button id="left_arrow_btn" class="left_arrow_btn" type="button" style="display: none;"><img src="/static/img/left_arrow_btn.png" style=" width: 10px; height: 10px;"></button>
                 <ol id='zbook_ol' style='display: inline-block; padding: 0px;'></ol>
                 <button id="right_arrow_btn" class="right_arrow_btn" type="button" style="display: none;"><img src="/static/img/right_arrow_btn.png" style=" width: 10px; height: 10px;"></button>
-            </div>                                  
-        </div>                    
+            </div>                                                        
+        </div>   
+        <div class="btnArea">
+            <button class="closeBtn" onclick="parent.$('#zipcodeLayer').remove();">닫기</button>
+        </div>                   
     </body>
 </html>
 

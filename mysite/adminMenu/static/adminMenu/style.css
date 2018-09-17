@@ -1,0 +1,133 @@
+div.rightBar {
+    float: left;
+    background: linear-gradient( to bottom, #da54ca 10%, #cb57db  70%, #ba5aec);
+    width: 240px; 
+    height: 950px; 
+    padding-top: 10px; 
+    border-radius: 5px;
+    font-family: Poppins;
+    font-size: 11px; 
+    /* display: inline-block;  */
+}
+
+div.editControl {   
+    display: inline-block;
+    position: absolute;        
+    margin-top: 50px;
+    margin-left: 2%;
+    border: solid 1px #E6E6E6;
+    border-bottom: none;
+    width: 60%;
+    height: 50px;
+    padding: 10px;
+}
+
+div.contents {     
+    display: inline-block;
+    position: absolute;
+    border: solid 1px #E6E6E6;
+    margin-left: 2%;
+    padding: 10px;
+    width: 60%;
+    margin-top: 121px;    
+    /* min-width: 400px; */
+}
+
+p.rightBarLink {
+    color: #f1c4ee; 
+    display: inline; 
+    padding-left: 10px;
+}
+
+ul.rightBar {
+    list-style: none; 
+    padding-left: 30px;
+}
+
+li.rightBar {
+    list-style-type : disc; 
+    padding-bottom: 5px;
+    color: white;
+}
+
+img.rightBar {
+    position: relative; 
+    top: 5px; 
+    left: 5px;
+}
+
+div.buttonBox {
+    border-radius: 3px;
+    border: solid 1px #EBEBEB;
+    padding: 0px;   
+    height: 22px;
+}
+
+input.editBtn[type="button"] {
+    display:none;
+}
+
+input.editButton[type="button"] + label img {
+    float: left;
+    width:10px;
+    height:10px;   
+    border: solid 2px transparent;
+}
+
+input[type="button"]:active  + label img {
+    background-color: #E5E5E5;
+}
+
+input[type="button"]:hover + label img {
+    background-color: #D3D3D3;
+    cursor:pointer;
+}
+
+input.editCheckBox[type="checkbox"] {
+    display:none;
+}
+
+input.editCheckBtn[type="checkbox"] + label img {
+    float: left;
+    width:10px;
+    height:10px;   
+    border: solid 2px transparent;
+}
+
+input[type="checkbox"]:checked + label img {
+    background-color: #E5E5E5;
+}
+
+input[type="checkbox"]:hover + label img {
+    background-color: #D3D3D3;
+    cursor:pointer;
+}
+
+input.editRadio[type="radio"] {
+    display:none;
+}
+
+input.editRadioBtn[type="radio"] + label img {
+    float: left;
+    width:10px;
+    height:10px;   
+    border: solid 2px transparent;
+}
+
+input[type="radio"]:checked + label img {
+    background-color: #E5E5E5;
+}
+
+input[type="radio"]:hover + label img {
+    background-color: #D3D3D3;
+    cursor:pointer;
+}
+
+img.btn {
+    padding: 4px;
+}
+
+iframe.contents {        
+    border: 1px solid #999;
+    width: 100%;
+}

@@ -12,19 +12,17 @@ a {
   color: black;
 }
 
-a.right {
-  display: inline-table;
+a.right {  
   float: right;
+  overflow: hidden;
 }
 
-a.left {
-  display: inline-table;
+a.left {  
   float: left;
   margin-left: 2%;
 }
 
-div.right {
-  display: inline-table;
+div.right {  
   float: right; 
   margin-right: 10px;
   padding-bottom: 6px; 

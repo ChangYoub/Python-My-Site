@@ -1,0 +1,67 @@
+{% extends 'adminMenu.html' %}
+
+{% block edit %}
+<div class='editControl'>
+    <div class='buttonBox' style="width: 176px; float: left; margin-right: 5px;">
+        <input id='numList' class="editBtn editButton" type="button" onclick="htmlEdit('contents', 'insertOrderedList')">
+        <label for='numList'><img class='btn' src="/static/img/list.png"/></label>
+
+        <input id='dotsList' class="editBtn editButton" type="button" onclick="htmlEdit('contents', 'insertUnorderedList')">
+        <label for='dotsList'><img class='btn' src="/static/img/list-dots.png"/></label>
+
+        <input id='rigthIndent' class="editBtn editButton" type="button" onclick="htmlEdit('contents', 'indent')">
+        <label for='rigthIndent'><img class='btn' src="/static/img/right-indent.png"/></label>
+
+        <input id='leftIndent' class="editBtn editButton" type="button" onclick="htmlEdit('contents', 'outdent')">
+        <label for='leftIndent'><img class='btn' src="/static/img/left-indent.png"/></label>
+
+        <input id='leftAlign' class="editRadio editRadioBtn" name='alignGrop' type="radio" onclick="radioBtnClick('contents', 'justifyleft')" checked="checked">
+        <label for='leftAlign'><img class='btn' src="/static/img/left-align.png"/></label>
+
+        <input id='centerAlign' class="editRadio editRadioBtn" name='alignGrop' type="radio" onclick="radioBtnClick('contents', 'justifycenter')">
+        <label for='centerAlign'><img class='btn' src="/static/img/center-align.png"/></label>
+
+        <input id='rightAlign' class="editRadio editRadioBtn" name='alignGrop' type="radio" onclick="radioBtnClick('contents', 'justifyright')">
+        <label for='rightAlign'><img class='btn' src="/static/img/right-align.png"/></label>
+
+        <input id='fullAlign' class="editRadio editRadioBtn" name='alignGrop' type="radio" onclick="radioBtnClick('contents', 'justifyFull')">
+        <label for='fullAlign'><img class='btn' src="/static/img/justify-align.png"/></label>
+    </div>
+    <div class='buttonBox' style="width: 88px; float: left;">
+        <input id='boldBtn' class="editCheckBox editCheckBtn" name='checkBox' type="checkbox" onclick="htmlEdit('contents', 'bold')">
+        <label for='boldBtn'><img class='btn' src="/static/img/bold.png"/></label>
+
+        <input id='italicBtn' class="editCheckBox editCheckBtn " name='checkBox' type="checkbox" onclick="htmlEdit('contents', 'italic')">
+        <label for='italicBtn'><img class='btn' src="/static/img/italic.png"/></label>
+
+        <input id='crossOutBtn' class="editCheckBox editCheckBtn" name='checkBox' type="checkbox" onclick="htmlEdit('contents', 'strikethrough')">
+        <label for='crossOutBtn'><img class='btn' src="/static/img/cross-out.png"/></label>
+
+        <input id='underlineBtn' class="editCheckBox editCheckBtn" name='checkBox' type="checkbox" onclick="htmlEdit('contents', 'underline')">
+        <label for='underlineBtn'><img class='btn' src="/static/img/underline.png"/></label>
+    </div>
+</div>
+<div class='contents'>
+    <iframe id='contents' class='contents' frameborder='0'></iframe>
+    <script type="text/javascript">
+        $(window).on("load", function(){  
+            var edit = {};
+            edit.w = document.getElementById('contents').contentWindow;            
+            edit.d = edit.w.document;                    
+            edit.d.write("<!DOCTYPE html><html><head><style>*{white-space: -moz-pre-wrap; word-break: break-all;}</style>");    
+            edit.d.write("<script type=\"text/javascript\" src='/static/js/jquery-3.3.1.min.js'>");        
+            edit.d.write("</sc"+"ript>");
+            edit.d.write("<script type=\"text/javascript\" src='/static/js/webEdit.js'>");
+            edit.d.write("</sc"+"ript>");
+            edit.d.write("<script>window.addEventListener('keyup', eventFillter, false);");
+            edit.d.write("window.addEventListener('keydown', eventFillter, false);");
+            edit.d.write("window.addEventListener('click', eventFillter, false);");            
+            edit.d.write("</sc"+"ript>");
+            edit.d.write("</head><body spellcheck=\"false\"></body></html>");
+            edit.d.designMode = "on";                                           
+            edit.w.focus();     
+        });        
+    </script>
+</div>
+
+{% endblock %}

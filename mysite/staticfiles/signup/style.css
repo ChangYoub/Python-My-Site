@@ -1,3 +1,7 @@
+* {
+  box-sizing: borer-box;
+}
+
 label.signup {
   font-size: 13px;
 }
@@ -7,13 +11,14 @@ input:focus {
 }
 
 input.signup {  
-  width: 150px;
+  width: 120px;
   height: 18px;
-  text-align: center;
+  text-align: left;
   padding-right: 10px;
   padding-left: 10px;
   border-radius: 8px;
   border: 1px solid #d9d9d9;
+  font-size: 12px;
 }
 
 input.signup.post {  
@@ -24,16 +29,41 @@ input.signup.post {
   padding-left: 10px;
   border-radius: 8px;
   border: 1px solid #d9d9d9;
+  font-size: 12px;
+}
+
+input.signup.address1 {
+  width: 300px;
+  height: 18px;
+  text-align: left;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+input.signup.address2 {
+  width: 300px;
+  height: 18px;
+  text-align: left;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;  
+  font-size: 12px;
 }
 
 table.signup {
   border-collapse: collapse;
   border: 1px solid #d7d5d5;
   width: 50%;
-  height: 300px;
+  height: 550px;
   margin-left:20%;
   margin: auto;
-  min-width: 600px;
+  min-width: 600px;  
+  font-size: 12px;
 }
 
 table.signup th {
@@ -49,6 +79,7 @@ table.signup th {
 table.signup td {  
   padding-left: 2%;
   border-bottom: 1px solid #d7d5d5;
+  width: 77%;
 }
 
 button.signup {  
@@ -105,11 +136,10 @@ a.signup:hover {
 }
 
 div.zipcodeLayer {
-  display: none;
   position: absolute;
   left: 41%; 
   width: 600px; 
-  height: 730px; 
+  height: 620px; 
   background: rgb(255, 255, 255); 
   z-index: 999;
   border: 1px solid rgb(127, 129, 134);
@@ -124,6 +154,7 @@ iframe.zipcodeLayer {
 @media (max-width: 557px){
   label.signup {
     font-size: 10px;
+    padding: 0px 20px 0px 0px;
   }
 }
 
@@ -135,4 +166,33 @@ iframe.zipcodeLayer {
   width:100%;
   background:#EE7785;
   color: white;
+}
+
+select.signup {
+  width: 60px;
+  height: 24px;
+  border: 1px solid #D5D5D5;
+  border-radius: 5px;
+  box-sizing: borer-box;
+  outline: none;  
+}
+
+select.signup.email {
+  width: 110px;
+  height: 24px;
+  border: 1px solid #D5D5D5;
+  border-radius: 5px;
+  box-sizing: borer-box;
+  outline: none;  
+  font-size: 12px;
+}
+
+input.phone {
+  width: 40px;
+  height: 20px;
+  border: 1px solid #D5D5D5;
+  border-radius: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  box-sizing: borer-box;  
 }

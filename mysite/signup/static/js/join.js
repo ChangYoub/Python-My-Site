@@ -1,13 +1,13 @@
 $(function(){
 	var flag = false;	
-		$("#duplcheck").on("click",function() {
+	$("#duplcheck").on("click",function() {
 		$.ajax({
 			url: "/duplcheck" ,
-            type: 'POST',            
-    	    data: {"csrfmiddlewaretoken": jQuery("[name=csrfmiddlewaretoken]").val(),
-        		'username': $("#id_username").val()
-    	    },
-            dataType: 'json',						
+			type: 'POST',            
+			data: {"csrfmiddlewaretoken": jQuery("[name=csrfmiddlewaretoken]").val(),
+				'username': $("#id_username").val()
+			},
+			dataType: 'json',						
 			success: function (data) { 		
 				if($("#id_username").val() != "") {
 					if(data.is_taken) {
@@ -24,7 +24,7 @@ $(function(){
 			}			
 		});
 		return false;
-     });
+	});
     
 	$("#id_username").on("focusout", function() {
 		if(flag){
@@ -46,13 +46,6 @@ function createZipcodeFrame(self) {
 		$div = $('<div id="zipcodeLayer" class="zipcodeLayer"> \
 				  <iframe id="zipcodeIframe" src="/static/templates/zipcode.html" class="zipcodeLayer" frameborder="0" /></iframe></div>');
 		$('#'+self.id).append($div);
-	}
-}
-
-function enterkey(evt) {		
-	var keyCode = evt.which?evt.which:event.keyCode;
-	if (keyCode == 13) {
-		$("#zipCodeSearchBtn").trigger("click");	
 	}	
 }
 
@@ -69,14 +62,12 @@ $(function() {
 					'currentPage': 1,
 				},
 				dataType: 'json',
-				success: function(data) {						
-					console.log(data);
+				success: function(data) {					
 					$('#addressList').scrollTop(0);	
 					$('#zbook_ol li').remove();
 					hideObject('left_arrow_btn', true);
 					hideObject('right_arrow_btn', true);
-					if(!data.hasOwnProperty('error')) {			
-						zclickSido(data);
+					if(!data.hasOwnProperty('error')) {									
 						createTable(data);	
 						if(data.post.pageinfo.totalPage.$ > 10)	{			
 							for(var i = 1; i <= data.post.pageinfo.totalPage.$; i++) {														
@@ -109,26 +100,15 @@ $(function() {
 		}
 		return false;
 	});
-});
 
-function zclickSido(data) {
-	var postcd = 0;
-	for(var i = 0; i <= data.post.pageinfo.totalPage.$; i++) {
-		postcd = data.post.itemlist.item[i].postcd.$;
-		postcd = Math.floor(postcd/1000);
-		switch(postcd) {
-			case 01:case 02:case 03:case 04:case 05:case 06:case 07:case 08:case 09:
-				alert("서울");
-				break;
-			case 50: 
-			case 51: 
-			case 52: 
-			case 53: 
-				alert("경남");
-				break;
-		}
-	}	
-}
+	$('#signup').on('submit', function(e) {	
+		var zipcode = $('#zipcode').val();
+		if(!zipcode) {
+			e.preventDefault();
+			alert("우편 번호를 입력해 주세요.");			
+		}		
+	});
+});
 
 function zclickPage(index, codeKey) {
 	$.ajax({
@@ -217,20 +197,33 @@ function indexClickPage(index, codeKey) {
 }
 
 function createTable(data) {
+	var postcd = 0;
 	$('#addressList').scrollTop(0);	
 	$('#result_table > tbody').empty();
 	$('.empty').css('display', 'none');
-	for(var i = 0; i < Object.keys(data.post.itemlist.item).length; i++) {		
+	for(var i = 0; i < Object.keys(data.post.itemlist.item).length; i++) {
 		if(data.post.pageinfo.totalCount.$ == 1) {
-			$('#result_table > tbody:last').append('<tr><td class="result_table"><p><span><span class="icoStreet">도로명</span>' + 
-			data.post.itemlist.item.address.$ + '</p><span class="icoNumber">지번</span>' +
-			data.post.itemlist.item.addrjibun.$ + '</td><td class="right">' + data.post.itemlist.item.postcd.$ + '</td></tr>');
+			if(data.post.itemlist.item.postcd.$ < 10000) {
+				postcd = zeroJoin(data.post.itemlist.item.postcd.$, 5);
+			}		
+			else {
+				postcd = data.post.itemlist.item.postcd.$;
+			}
+			$('#result_table > tbody:last').append('<tr><td class="result_table"><a class="addressText" onclick="addressClick(\'' + data.post.itemlist.item.address.$  + '\',' + postcd + ');"><p><span class="icoStreet">도로명</span>' + 
+			data.post.itemlist.item.address.$ + '</p></a><a class="addressText" onclick="addressClick(\'' + data.post.itemlist.item[i].addrjibun.$ + '\',' + postcd + ');"><span class="icoNumber">지번</span>' +
+			data.post.itemlist.item.addrjibun.$ + '</td><td class="right">' + postcd + '</td></tr>');
 			break;
 		}
 		else {
-			$('#result_table > tbody:last').append('<tr><td class="result_table"><p><span><span class="icoStreet">도로명</span>' + 
-			data.post.itemlist.item[i].address.$   + '</p><span class="icoNumber">지번</span>' +
-			data.post.itemlist.item[i].addrjibun.$ + '</td><td class="right">' + data.post.itemlist.item[i].postcd.$ + '</td></tr>');
+			if(data.post.itemlist.item[i].postcd.$ < 10000) {
+				postcd = zeroJoin(data.post.itemlist.item[i].postcd.$, 5);
+			}		
+			else {
+				postcd = data.post.itemlist.item[i].postcd.$;
+			}
+			$('#result_table > tbody:last').append('<tr><td class="result_table"><a class="addressText" onclick="addressClick(\'' + data.post.itemlist.item[i].address.$  + '\',' + postcd + ');"><p><span class="icoStreet">도로명</span>' + 
+			data.post.itemlist.item[i].address.$   + '</p></a><a class="addressText" onclick="addressClick(\'' + data.post.itemlist.item[i].addrjibun.$ + '\',' + postcd + ');"><span class="icoNumber">지번</span>' +
+			data.post.itemlist.item[i].addrjibun.$ + '</a></td><td class="right">' + postcd + '</td></tr>');
 		}		
 	}	
 }
@@ -264,3 +257,27 @@ function hideObject(id, state) {
 		document.getElementById(id).style.display = "inline-block";		
 	}
 }
+
+function addressClick(address, postCode) { 
+	parent.$('#zipcodeLayer, #zipcode').val(zeroJoin(postCode, 5));
+	parent.$('#zipcodeLayer, #address1').val(address);
+	parent.$('#zipcodeLayer').remove();
+}
+
+function enterkey(evt) {		
+	var keyCode = evt.which?evt.which:event.keyCode;
+	if (keyCode == 13) {
+		$("#zipCodeSearchBtn").trigger("click");	
+	}	
+}
+
+function zeroJoin(n, width) {
+	n = n + '';
+	return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+}
+
+$(document).ready(function() { 
+	$('#signup').on('submit', function(e){
+		console.log('hi');		
+	})
+})

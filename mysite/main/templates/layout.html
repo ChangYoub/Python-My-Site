@@ -11,13 +11,10 @@
         <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'signup/style.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'adminMenu/style.css' %}" />
         <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-        <script src="{% static 'js/join.js' %}"></script>
-        <script language="javascript">
-            function showDiv(name) {
-                document.getElementById(name).style.display = "block";
-            }            
-        </script>
+        <script src="{% static 'js/join.js' %}"></script>              
+        <script src="{% static 'js/webEdit.js' %}"></script>     
     </head>
     <body>
         <a class= "left" href="{% url 'home' %}">HOME</a>
@@ -33,7 +30,7 @@
                     회원님&nbsp;
                 </div>
             {% else %}
-                <a class= "right" href="{% url 'signup' %}" style="margin-right: 10%;">회원가입</a>
+                <a class= "right" href="{% url 'signup' %}" style="margin-right: 2%;">회원가입</a>
                 <a class= "right" href="{% url 'login_url' %}" style="margin-right: 20px;">로그인</a>
             {% endif %}
         </div>

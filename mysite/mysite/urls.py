@@ -23,7 +23,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     url(r'', include('main.urls')),  
     url(r'', include('signup.urls')), 
-    
+    url(r'', include('adminMenu.urls')),
     url(r'login/$', 
         auth_views.login,   
         name='login_url', kwargs={'authentication_form': LoginForm,}),
