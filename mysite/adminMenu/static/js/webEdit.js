@@ -1,6 +1,11 @@
-function htmlEdit(self, excute) {      
-    document.getElementById(self).contentWindow.document.body.focus();    
-    document.getElementById(self).contentWindow.document.execCommand(excute); 
+function htmlEdit(self, excute, value) {      
+    document.getElementById(self).contentWindow.document.body.focus();   
+    if(value == null) {
+        document.getElementById(self).contentWindow.document.execCommand(excute); 
+    }
+    else {
+        document.getElementById(self).contentWindow.document.execCommand(excute, null, value); 
+    }
 }
 
 function radioBtnClick(self, excute) {
@@ -115,5 +120,7 @@ function eventFillter(event) {
     }    
 }
 
-
+function focusEvent() {
+    parent.document.getElementById('colorPicker').style.display = 'none';
+}
 

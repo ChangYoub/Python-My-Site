@@ -2,35 +2,34 @@ div.rightBar {
     float: left;
     background: linear-gradient( to bottom, #da54ca 10%, #cb57db  70%, #ba5aec);
     width: 240px; 
-    height: 950px; 
+    height: 200%; 
     padding-top: 10px; 
     border-radius: 5px;
     font-family: Poppins;
     font-size: 11px; 
-    /* display: inline-block;  */
+    padding-bottom: 200%;
 }
 
 div.editControl {   
-    display: inline-block;
-    position: absolute;        
+    float: left;
     margin-top: 50px;
     margin-left: 2%;
     border: solid 1px #E6E6E6;
     border-bottom: none;
     width: 60%;
-    height: 50px;
+    height: 55px;
     padding: 10px;
+    padding-top: 5px;
+    min-width: 450px;
 }
 
-div.contents {     
-    display: inline-block;
-    position: absolute;
+div.contents {   
+    float: left; 
     border: solid 1px #E6E6E6;
     margin-left: 2%;
     padding: 10px;
-    width: 60%;
-    margin-top: 121px;    
-    /* min-width: 400px; */
+    width: 60%;   
+    min-width: 450px;
 }
 
 p.rightBarLink {
@@ -57,10 +56,13 @@ img.rightBar {
 }
 
 div.buttonBox {
+    float: left;
     border-radius: 3px;
     border: solid 1px #EBEBEB;
-    padding: 0px;   
-    height: 22px;
+    padding: 0px;  
+    height: 25px;
+    margin-top: 5px;
+    margin-right: 5px;   
 }
 
 input.editBtn[type="button"] {
@@ -69,8 +71,8 @@ input.editBtn[type="button"] {
 
 input.editButton[type="button"] + label img {
     float: left;
-    width:10px;
-    height:10px;   
+    width: 13px;
+    height: 13px;   
     border: solid 2px transparent;
 }
 
@@ -89,8 +91,8 @@ input.editCheckBox[type="checkbox"] {
 
 input.editCheckBtn[type="checkbox"] + label img {
     float: left;
-    width:10px;
-    height:10px;   
+    width:13px;
+    height:13px;   
     border: solid 2px transparent;
 }
 
@@ -109,8 +111,8 @@ input.editRadio[type="radio"] {
 
 input.editRadioBtn[type="radio"] + label img {
     float: left;
-    width:10px;
-    height:10px;   
+    width:13px;
+    height:13px;   
     border: solid 2px transparent;
 }
 
@@ -130,4 +132,26 @@ img.btn {
 iframe.contents {        
     border: 1px solid #999;
     width: 100%;
+}
+
+div.colorPicker { 
+    float: left;  
+    position: relative;
+    top: 2px; 
+    border: 1px solid black;     
+    padding: 5px; 
+    width: 182px; 
+    height: 400px; 
+    z-index: 1000;
+    display : none;
+    background-color:#F9F9F9;
+}
+
+li.colorPicker {
+    float: left;
+    margin: 0 1px 1px 0;
+    width: 12px;
+    height: 12px;
+    cursor:pointer;
+    border: none;    
 }

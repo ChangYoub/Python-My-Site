@@ -1,13 +1,14 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div style="display: inline;">
-<div class='rightBar'>
-    <ul class='rightBar'>
-        <li class='rightBar'><a href="/edit"><img src="/static/img/shopping_bag_add.png" class='rightBar'/>
-            <p class='rightBarLink'>PRODUCT REGISTRATION</p></a>
-        </li>
-    </ul>    
+<div style="float: left; min-width: 800px;">
+    <div class='rightBar'>
+        <ul class='rightBar'>
+            <li class='rightBar'><a href="/edit"><img src="/static/img/shopping_bag_add.png" class='rightBar'/>
+                <p class='rightBarLink'>PRODUCT REGISTRATION</p></a>
+            </li>
+        </ul>    
+    </div>
+    {% block edit %}{% endblock %}
 </div>
-{% block edit %}{% endblock %}
 {% endblock %}
