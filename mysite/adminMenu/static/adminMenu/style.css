@@ -155,3 +155,45 @@ li.colorPicker {
     cursor:pointer;
     border: none;    
 }
+
+span.colorBox {
+    float: left;
+    margin-top: 6px;
+    border: solid 1px #D8D8D8;
+    width: 66px;    
+    height: 15px;     
+    background-color: #000000;
+}
+
+input.colorHexText {    
+    float: left;
+    margin: 5px 5px 0px 3px;
+    width: 66px;
+    height: 11px;  
+}
+
+button.colorPickerBtn {
+    float: left;
+    margin-top: 4px;
+    border: solid 1px #BDBDBD;
+    height: 18px;
+    background-color: white;
+    font-size: 11px;
+    font-family: 돋움;    
+    cursor:pointer;    
+}
+
+button:focus {
+    outline: none;
+  }
+  
+  div.test {
+    float: left;
+    border: solid 1px black;
+    width: 100px;
+    height: 100px;
+    cursor: crosshair;
+    background: #f00 
+                url(//i1.daumcdn.net/icon/editor/img_color_w.png) 
+                no-repeat;
+  }

@@ -1,5 +1,4 @@
-function htmlEdit(btn, self, excute) {      
-
+function htmlEdit(btn, self, excute) {     
     document.getElementById(self).contentWindow.document.body.focus();   
     
     if(btn.checked == true && 
@@ -12,11 +11,7 @@ function htmlEdit(btn, self, excute) {
     }
 }
 
-function htmlRadioEdit(self, excute) {     
-    // var arry =  document.getElementsByName('checkBox');
-    // for(var i = 0; i < arry.length; i++) {
-    //     arry[i].checked = false; 
-    // }
+function htmlRadioEdit(self, excute) {    
     document.getElementById(self).contentWindow.document.body.focus();    
     document.getElementById(self).contentWindow.document.execCommand(excute);    
 }   
