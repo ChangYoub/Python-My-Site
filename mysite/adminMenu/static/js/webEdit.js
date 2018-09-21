@@ -155,13 +155,13 @@ function eventFillter(event) {
 }
 
 function focusEvent() {
-    parent.document.getElementById('colorPicker').style.display = 'none';   
+    parent.document.getElementById('colorPickerArea').style.display = 'none';   
     var colorHex = rgb2hex(parent.document.getElementById('colorBox').style.backgroundColor);
     parent.document.getElementById('colorHexText').value = colorHex;
 }
 
 function showColorPicker() {
-    var divObj = document.getElementById('colorPicker');                
+    var divObj = document.getElementById('colorPickerArea');                
     if(divObj.style.display == 'none' || divObj.style.display == "") {
         divObj.style.display = 'block';                   
     }
@@ -190,3 +190,4 @@ function rgb2hex(rgb) {
            ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2).toUpperCase() +
            ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2).toUpperCase() : '';
 }
+

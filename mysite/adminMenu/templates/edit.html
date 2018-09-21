@@ -46,116 +46,273 @@
 
         <input id='fontColorPicker' class="editBtn editButton" type="button" onclick="showColorPicker()">
         <label for='fontColorPicker'><img class='btn' src="/static/img/sort-down.png" style="width: 7px; height: 11px; padding: 0px; padding-top: 6px; padding-bottom: 5px"/></label>
-        <div id="colorPicker" class="colorPicker"> 
-            <ul style="list-style: none; padding: 0px; margin: 0px;">
-                <li class="colorPicker" style="background-color:#FF0000;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FF5E00;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FFBB00;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FFE400;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#ABF200;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#1FDA11;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#00D8FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#0055FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#0900FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#6600FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FF00DD;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FF007F;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#000000;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FFFFFF;" onclick="colorPickerLinkClick(this)"></li>  <!-- 줄바꿈 -->
-                <li class="colorPicker" style="background-color:#FFD8D8;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FAE0D4;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FAECC5;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FAF4C0;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#E4F7BA;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#CEFBC9;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#D4F4FA;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#D9E5FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#DAD9FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#E8D9FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FFD9FA;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FFD9EC;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#F6F6F6;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#EAEAEA;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FFA7A7;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FFC19E;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FFE08C;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FAED7D;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#CEF279;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#B7F0B1;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#B2EBF4;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#B2CCFF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#B5B2FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#D1B2FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FFB2F5;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#FFB2D9;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#D5D5D5;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#BDBDBD;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#F15F5F;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#F29661;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#F2CB61;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#E5D85C;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#BCE55C;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#86E57F;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#5CD1E5;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#6699FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#6B66FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#A366FF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#F261DF;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#F261AA;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#A6A6A6;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#8C8C8C;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#CC3D3D;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#CC723D;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#CCA63D;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#C4B73B;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#9FC93C;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#47C83E;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#3DB7CC;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#4174D9;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#4641D9;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#7E41D9;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#D941C5;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#D9418D;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#747474;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#5D5D5D;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#980000;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#993800;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#997000;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#998A00;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#6B9900;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#2F9D27;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#008299;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#003399;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#050099;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#3D0099;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#990085;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#99004C;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#4C4C4C;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#353535;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#670000;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#662500;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#664B00;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#665C00;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#476600;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#22741C;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#005766;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#002266;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#030066;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#290066;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#660058;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#660033;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#212121;" onclick="colorPickerLinkClick(this)"></li>
-                <li class="colorPicker" style="background-color:#000000;" onclick="colorPickerLinkClick(this)"></li>
-            </ul>
-            <span id="colorBox" class="colorBox"></span>
+        <div id="colorPickerArea" class="colorPickerArea">
+            <div id="colorPicker" class="colorPicker"> 
+                <ul style="list-style: none; padding: 0px; margin: 0px;">
+                    <li class="colorPicker" style="background-color:#FF0000;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FF5E00;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFBB00;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFE400;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#ABF200;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#1FDA11;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#00D8FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#0055FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#0900FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#6600FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FF00DD;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FF007F;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#000000;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFFFFF;" onclick="colorPickerLinkClick(this)"></li>  <!-- 줄바꿈 -->
+                    <li class="colorPicker" style="background-color:#FFD8D8;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FAE0D4;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FAECC5;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FAF4C0;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#E4F7BA;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#CEFBC9;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D4F4FA;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D9E5FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#DAD9FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#E8D9FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFD9FA;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFD9EC;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F6F6F6;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#EAEAEA;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFA7A7;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFC19E;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFE08C;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FAED7D;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#CEF279;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#B7F0B1;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#B2EBF4;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#B2CCFF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#B5B2FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D1B2FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFB2F5;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFB2D9;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D5D5D5;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#BDBDBD;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F15F5F;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F29661;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F2CB61;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#E5D85C;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#BCE55C;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#86E57F;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#5CD1E5;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#6699FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#6B66FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#A366FF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F261DF;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F261AA;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#A6A6A6;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#8C8C8C;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#CC3D3D;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#CC723D;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#CCA63D;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#C4B73B;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#9FC93C;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#47C83E;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#3DB7CC;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#4174D9;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#4641D9;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#7E41D9;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D941C5;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D9418D;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#747474;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#5D5D5D;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#980000;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#993800;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#997000;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#998A00;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#6B9900;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#2F9D27;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#008299;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#003399;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#050099;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#3D0099;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#990085;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#99004C;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#4C4C4C;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#353535;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#670000;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#662500;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#664B00;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#665C00;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#476600;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#22741C;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#005766;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#002266;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#030066;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#290066;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#660058;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#660033;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#212121;" onclick="colorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#000000;" onclick="colorPickerLinkClick(this)"></li>
+                </ul>
+                <span id="colorBox" class="colorBox"></span>
+                <script>
+                    $(window).on("load", function() {  
+                        document.getElementById('colorBox').style.backgroundColor = '#000000';
+                    });
+                </script>
+                <input id="colorHexText" class="colorHexText" type="text" value="#000000" maxlength="7"/>
+                <button class="colorPickerBtn" onclick="colorPickerBtnClick();">입력</button>
+                <input id="paletteBtn" class="paletteBtn" type="checkbox" onclick="paletteBtnClick();"/>       
+                <label id="paletteLabel" for="paletteBtn" class="paletteLabel">더보기<img id="paletteBtnImg" class="paletteLabel" src="/static/img/sort-down.png"/></label>            
+            </div>
+            <div id="paletteArea" class="paletteArea" style="display: none;">
+                <div class="paletteBorder">
+                    <canvas id="palette" class="palette"></canvas>
+                    <canvas id="bar" class="bar"></canvas>
+                    <script>
+                        $(window).on("load", function() {  
+                            var cp = {
+                                bar: null,
+                                barc: null,
+                                pal: null,
+                                palc: null,
+                                pallc: null,
+                                flag: false,
+
+                                init: function() {
+                                    cp.initBar();                                    
+                                    cp.initPalette();
+                                    cp.drawPalette(255, 0, 0);
+                                },
+
+                                initBar: function() {
+                                    var bar = cp.bar = document.getElementById("bar");
+                                    var ctx = cp.barc = bar.getContext('2d');
+                                    
+                                    bar.addEventListener("mousemove", function(e) {
+                                        cp.findxy('move', e);
+                                    }, false);
+
+                                    bar.addEventListener("mousedown", function(e) {
+                                        cp.findxy('down', e);
+                                    }, false);
+
+                                    bar.addEventListener("mouseup", function (e) {
+                                        cp.findxy('up', e);
+                                    }, false);
+                                    bar.addEventListener("mouseout", function (e) {
+                                        cp.findxy('out', e);
+                                    }, false);
+
+                                    var w = bar.width  = 20;
+                                    var h = bar.height = 120;
+
+                                    var grd = ctx.createLinearGradient(0, 0, w, h);
+                                    grd.addColorStop(0, '#ff0000');
+                                    grd.addColorStop(0.166, '#ffff00');
+                                    grd.addColorStop(0.333, '#00ff00');
+                                    grd.addColorStop(0.5, '#00ffff');
+                                    grd.addColorStop(0.666, '#0000ff');
+                                    grd.addColorStop(0.834, '#ff00ff');
+                                    grd.addColorStop(1, '#ff0000');
+
+                                    ctx.fillStyle = grd;
+                                    ctx.fillRect(0, 0, w, h);
+
+                                    bar.onclick = function(event) {
+                                        var y = event.pageY - 289;
+                                        var color = cp.barc.getImageData(0, y, 1, 1).data;                                        
+                                        
+                                        cp.drawPalette(color[0], color[1], color[2]);
+                                    };
+                                },
+
+                                initPalette: function() {
+                                    var pal = cp.pal = document.getElementById('palette');
+                                    cp.palc = pal.getContext('2d');
+
+                                    pal.width = 141;
+                                    pal.height = 256;
+
+                                    pal.onclick = function(event) {
+                                        // alert(event.pageY);
+                                        var x = event.pageX - 607;
+                                        var y = event.pageY - 250;
+                                        var color = cp.palc.getImageData(x, y, 1, 1).data;                                                                                
+                                        document.getElementById('colorBox').style.backgroundColor = rgb2hex("rgb("+color[0]+','+color[1]+','+color[2]+')');
+                                    };
+                                },
+
+                                drawPalette: function(r, g, b) {
+                                    var nowColor = (r + '-' +g + '-' + b);
+                                    if(cp.pallc == nowColor) {
+                                        return;
+                                    }
+                                    else {
+                                        cp.pallc = nowColor;
+                                    }
+
+                                    var palc = cp.palc;
+
+                                    for(var i = 0; i < 255;) {
+                                        var leftColor = 255 - i;
+                         
+                                        var grd = palc.createLinearGradient(0, 0, 141, 1);
+                                        grd.addColorStop(0, 'rgb(' + leftColor + ',' + leftColor + ',' + leftColor + ')');
+                                        grd.addColorStop(1, 'rgb(' + r + ',' + g + ',' + b + ')');
+                                        palc.fillStyle = grd;
+                                        palc.fillRect(0, i++, 141, i);
+
+                                        if(r > 0) {
+                                            r--;
+                                        }
+                                        if(g > 0) {
+                                            g--;
+                                        }
+                                        if(b > 0) {
+                                            b--;
+                                        }
+                                    }
+                                },
+
+                                findxy: function(action, event) { 
+                                    var y = event.pageY - 289;
+                                    var color = cp.barc.getImageData(0, y, 1, 1).data;
+                                    switch(action) {
+                                        case "down":
+                                            cp.flag = true;
+                                            break;
+
+                                        case "move":
+                                            if(cp.flag == true) {                                                                                      
+                                                cp.drawPalette(color[0], color[1], color[2]);
+                                            } 
+                                            break;
+
+                                        case "up":
+                                            cp.flag = false;
+                                            break;
+
+                                        case "out":
+                                            cp.flag = false;
+                                            break;
+                                    }                                    
+                                },
+                            };
+
+                            cp.init();
+                        });
+                    </script>
+                </div>
+            </div>
             <script>
-                $(window).on("load", function() {  
-                    document.getElementById('colorBox').style.backgroundColor = '#000000';
-                });
+                function paletteBtnClick() {
+                    if(document.getElementById('paletteBtn').checked == true) {
+                        document.getElementById('paletteLabel').innerHTML = '접기<img id="paletteBtnImg" class="paletteLabel">';                    
+                        document.getElementById('paletteBtnImg').src = "/static/img/sort-up.png"; 
+                        document.getElementById('paletteArea').style.display = "block";                        
+                    }
+                    else {
+                        document.getElementById('paletteLabel').innerHTML = '더보기<img id="paletteBtnImg" class="paletteLabel">';
+                        document.getElementById('paletteBtnImg').src = "/static/img/sort-down.png"; 
+                        document.getElementById('paletteArea').style.display = "none";                        
+                    }
+                }
             </script>
-            <input id="colorHexText" class="colorHexText" type="text" value="#000000" maxlength="7"/>
-            <button class="colorPickerBtn" onclick="colorPickerBtnClick()">입력</button>
-            <div class="test"></div>           
         </div>
     </div>
 </div>

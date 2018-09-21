@@ -96,11 +96,11 @@ input.editCheckBtn[type="checkbox"] + label img {
     border: solid 2px transparent;
 }
 
-input[type="checkbox"]:checked + label img {
+input.editCheckBtn[type="checkbox"]:checked + label img {
     background-color: #E5E5E5;
 }
 
-input[type="checkbox"]:hover + label img {
+input.editCheckBtn[type="checkbox"]:hover + label img {
     background-color: #D3D3D3;
     cursor:pointer;
 }
@@ -134,17 +134,21 @@ iframe.contents {
     width: 100%;
 }
 
-div.colorPicker { 
+div.colorPickerArea {
+    display : none;
     float: left;  
     position: relative;
-    top: 2px; 
-    border: 1px solid black;     
-    padding: 5px; 
-    width: 182px; 
-    height: 400px; 
+    top: 2px;    
+    border: 1px solid black; 
+    width: 200px;    
     z-index: 1000;
-    display : none;
-    background-color:#F9F9F9;
+    background-color:#F9F9F9;    
+}
+
+div.colorPicker {     
+    display: inline-block;
+    width: 182px;     
+    padding: 8px;            
 }
 
 li.colorPicker {
@@ -187,13 +191,54 @@ button:focus {
     outline: none;
   }
   
-  div.test {
+input.paletteBtn[type="checkbox"] {
+    display: none;
+    float: right;    
+}
+
+label.paletteLabel {
+    float: right;
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+img.paletteLabel {
+    position: relative; 
+    margin-left: 3px;
+    width: 5px; 
+    height: 8px;   
+}
+
+div.paletteArea {    
+    display: inline-block;
+    position: relative; 
+    bottom: 4px;    
+    width: 182px;
+    height: 130px;
+    padding: 8px;
+    background-color:#F9F9F9;     
+}
+
+div.paletteBorder {
+    padding: 5px;
+    border: solid 1px #D8D8D8; 
+    height: 122px;      
+}
+
+canvas.palette {
     float: left;
-    border: solid 1px black;
-    width: 100px;
-    height: 100px;
+    margin-right: 5px;    
+    width: 141px;  
+    height: 120px;  
     cursor: crosshair;
-    background: #f00 
-                url(//i1.daumcdn.net/icon/editor/img_color_w.png) 
-                no-repeat;
-  }
+}
+
+canvas.bar {
+    float: left;
+    width: 20px;
+    height: 120px;  
+    cursor: crosshair;    
+}
