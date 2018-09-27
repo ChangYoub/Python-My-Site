@@ -40,12 +40,19 @@
         <input id='underlineBtn' class="editCheckBox editCheckBtn" name='checkBox' type="checkbox" onclick="htmlEdit('contents', 'underline')">
         <label for='underlineBtn'><img class='btn' src="/static/img/underline.png"/></label>
     </div>
-    <div class='buttonBox' style="width: 100px;">
-        <input id='fontColor' class="editBtn editButton" type="button" onclick="colorPickerBtnClick()">
-        <label for='fontColor'><img class='btn' src="/static/img/font-color.png" style="width: 13px; padding-right: 1px; padding-left: 2px;"/></label>
+    <div class='buttonBox' style="width:66px;">
+        <input id='fontColor' class="editBtn editButton" type="button" onclick="colorPickerArrowBtnClick();">
+        <label for='fontColor'><img class='btn' src="/static/img/font-color.png" style="width: 13px; padding-right: 1px; padding-left: 4px;"/></label>
 
-        <input id='fontColorPicker' class="editBtn editButton" type="button" onclick="showColorPicker()">
+        <input id='fontColorPicker' class="editBtn editButton" type="button" onclick="showDiv('colorPickerArea', 'bgColorPickerArea', 'fontList');">
         <label for='fontColorPicker'><img class='btn' src="/static/img/sort-down.png" style="width: 7px; height: 11px; padding: 0px; padding-top: 6px; padding-bottom: 5px"/></label>
+
+        <input id='fontBgColor' class="editBtn editButton" type="button" onclick="bgColorPickerArrowBtnClick();">
+        <label for='fontBgColor'><img class='btn' src="/static/img/font-background-color.png" style="width: 13px; padding-right: 1px; padding-left: 2px;"/></label>
+
+        <input id='fontBgColorPicker' class="editBtn editButton" type="button" onclick="showDiv('bgColorPickerArea', 'colorPickerArea', 'fontList');">
+        <label for='fontBgColorPicker'><img class='btn' src="/static/img/sort-down.png" style="width: 7px; height: 11px; padding: 0px; padding-right: 2px; padding-top: 6px; padding-bottom: 5px"/></label>
+
         <div id="colorPickerArea" class="colorPickerArea">
             <div id="colorPicker" class="colorPicker"> 
                 <ul style="list-style: none; padding: 0px; margin: 0px;">
@@ -148,173 +155,174 @@
                     <li class="colorPicker" style="background-color:#212121;" onclick="colorPickerLinkClick(this)"></li>
                     <li class="colorPicker" style="background-color:#000000;" onclick="colorPickerLinkClick(this)"></li>
                 </ul>
-                <span id="colorBox" class="colorBox"></span>
-                <script>
-                    $(window).on("load", function() {  
-                        document.getElementById('colorBox').style.backgroundColor = '#000000';
-                    });
-                </script>
+                <span id="colorBox" class="colorBox"></span>           
                 <input id="colorHexText" class="colorHexText" type="text" value="#000000" maxlength="7"/>
                 <button class="colorPickerBtn" onclick="colorPickerBtnClick();">입력</button>
-                <input id="paletteBtn" class="paletteBtn" type="checkbox" onclick="paletteBtnClick();"/>       
+                <input id="paletteBtn" class="paletteBtn" type="checkbox" onclick="paletteBtnClick(this, 'paletteArea', 'paletteLabel', 'paletteBtnImg');"/>       
                 <label id="paletteLabel" for="paletteBtn" class="paletteLabel">더보기<img id="paletteBtnImg" class="paletteLabel" src="/static/img/sort-down.png"/></label>            
             </div>
             <div id="paletteArea" class="paletteArea" style="display: none;">
                 <div class="paletteBorder">
                     <canvas id="palette" class="palette"></canvas>
                     <canvas id="bar" class="bar"></canvas>
-                    <script>
-                        $(window).on("load", function() {  
-                            var cp = {
-                                bar: null,
-                                barc: null,
-                                pal: null,
-                                palc: null,
-                                pallc: null,
-                                flag: false,
-
-                                init: function() {
-                                    cp.initBar();                                    
-                                    cp.initPalette();
-                                    cp.drawPalette(255, 0, 0);
-                                },
-
-                                initBar: function() {
-                                    var bar = cp.bar = document.getElementById("bar");
-                                    var ctx = cp.barc = bar.getContext('2d');
-                                    
-                                    bar.addEventListener("mousemove", function(e) {
-                                        cp.findxy('move', e);
-                                    }, false);
-
-                                    bar.addEventListener("mousedown", function(e) {
-                                        cp.findxy('down', e);
-                                    }, false);
-
-                                    bar.addEventListener("mouseup", function (e) {
-                                        cp.findxy('up', e);
-                                    }, false);
-                                    bar.addEventListener("mouseout", function (e) {
-                                        cp.findxy('out', e);
-                                    }, false);
-
-                                    var w = bar.width  = 20;
-                                    var h = bar.height = 120;
-
-                                    var grd = ctx.createLinearGradient(0, 0, w, h);
-                                    grd.addColorStop(0, '#ff0000');
-                                    grd.addColorStop(0.166, '#ffff00');
-                                    grd.addColorStop(0.333, '#00ff00');
-                                    grd.addColorStop(0.5, '#00ffff');
-                                    grd.addColorStop(0.666, '#0000ff');
-                                    grd.addColorStop(0.834, '#ff00ff');
-                                    grd.addColorStop(1, '#ff0000');
-
-                                    ctx.fillStyle = grd;
-                                    ctx.fillRect(0, 0, w, h);
-
-                                    bar.onclick = function(event) {
-                                        var y = event.pageY - 289;
-                                        var color = cp.barc.getImageData(0, y, 1, 1).data;                                        
-                                        
-                                        cp.drawPalette(color[0], color[1], color[2]);
-                                    };
-                                },
-
-                                initPalette: function() {
-                                    var pal = cp.pal = document.getElementById('palette');
-                                    cp.palc = pal.getContext('2d');
-
-                                    pal.width = 141;
-                                    pal.height = 256;
-
-                                    pal.onclick = function(event) {
-                                        // alert(event.pageY);
-                                        var x = event.pageX - 607;
-                                        var y = event.pageY - 250;
-                                        var color = cp.palc.getImageData(x, y, 1, 1).data;                                                                                
-                                        document.getElementById('colorBox').style.backgroundColor = rgb2hex("rgb("+color[0]+','+color[1]+','+color[2]+')');
-                                    };
-                                },
-
-                                drawPalette: function(r, g, b) {
-                                    var nowColor = (r + '-' +g + '-' + b);
-                                    if(cp.pallc == nowColor) {
-                                        return;
-                                    }
-                                    else {
-                                        cp.pallc = nowColor;
-                                    }
-
-                                    var palc = cp.palc;
-
-                                    for(var i = 0; i < 255;) {
-                                        var leftColor = 255 - i;
-                         
-                                        var grd = palc.createLinearGradient(0, 0, 141, 1);
-                                        grd.addColorStop(0, 'rgb(' + leftColor + ',' + leftColor + ',' + leftColor + ')');
-                                        grd.addColorStop(1, 'rgb(' + r + ',' + g + ',' + b + ')');
-                                        palc.fillStyle = grd;
-                                        palc.fillRect(0, i++, 141, i);
-
-                                        if(r > 0) {
-                                            r--;
-                                        }
-                                        if(g > 0) {
-                                            g--;
-                                        }
-                                        if(b > 0) {
-                                            b--;
-                                        }
-                                    }
-                                },
-
-                                findxy: function(action, event) { 
-                                    var y = event.pageY - 289;
-                                    var color = cp.barc.getImageData(0, y, 1, 1).data;
-                                    switch(action) {
-                                        case "down":
-                                            cp.flag = true;
-                                            break;
-
-                                        case "move":
-                                            if(cp.flag == true) {                                                                                      
-                                                cp.drawPalette(color[0], color[1], color[2]);
-                                            } 
-                                            break;
-
-                                        case "up":
-                                            cp.flag = false;
-                                            break;
-
-                                        case "out":
-                                            cp.flag = false;
-                                            break;
-                                    }                                    
-                                },
-                            };
-
-                            cp.init();
-                        });
-                    </script>
                 </div>
             </div>
+        </div>  
+        <div id="bgColorPickerArea" class="colorPickerArea" style="left: 35px;">
+            <div id="bgColorPicker" class="colorPicker"> 
+                <button class="bgColorPickerBtn" style="background-color: #FD001A;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #E24BCB;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #000000;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #FD5C21;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #7A49AC;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #838383;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #FEB833;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #4777FA;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #69E8FD; color: black;" onclick="bgColorPickerBlackFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #FFE13C;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #2AAFD7;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #8EFBCC; color: black;" onclick="bgColorPickerBlackFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #A7C135;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #179897;" onclick="bgColorPickerWhiteFontClick(this);">가나다</button>
+                <button class="bgColorPickerBtn" style="background-color: #FFFFFF; color: black;  margin-bottom: 6px;" onclick="bgColorPickerBlackFontClick(this);">가나다</button>
+                <ul style="list-style: none; padding: 0px; margin: 0px;">
+                    <li class="colorPicker" style="background-color:#FF0000;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FF5E00;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFBB00;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFE400;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#ABF200;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#1FDA11;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#00D8FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#0055FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#0900FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#6600FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FF00DD;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FF007F;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#000000;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFFFFF;" onclick="bgColorPickerLinkClick(this)"></li>  <!-- 줄바꿈 -->
+                    <li class="colorPicker" style="background-color:#FFD8D8;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FAE0D4;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FAECC5;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FAF4C0;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#E4F7BA;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#CEFBC9;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D4F4FA;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D9E5FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#DAD9FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#E8D9FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFD9FA;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFD9EC;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F6F6F6;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#EAEAEA;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFA7A7;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFC19E;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFE08C;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FAED7D;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#CEF279;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#B7F0B1;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#B2EBF4;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#B2CCFF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#B5B2FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D1B2FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFB2F5;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#FFB2D9;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D5D5D5;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#BDBDBD;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F15F5F;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F29661;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F2CB61;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#E5D85C;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#BCE55C;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#86E57F;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#5CD1E5;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#6699FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#6B66FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#A366FF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F261DF;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#F261AA;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#A6A6A6;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#8C8C8C;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#CC3D3D;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#CC723D;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#CCA63D;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#C4B73B;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#9FC93C;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#47C83E;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#3DB7CC;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#4174D9;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#4641D9;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#7E41D9;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D941C5;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#D9418D;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#747474;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#5D5D5D;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#980000;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#993800;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#997000;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#998A00;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#6B9900;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#2F9D27;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#008299;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#003399;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#050099;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#3D0099;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#990085;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#99004C;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#4C4C4C;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#353535;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#670000;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#662500;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#664B00;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#665C00;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#476600;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#22741C;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#005766;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#002266;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#030066;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#290066;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#660058;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#660033;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#212121;" onclick="bgColorPickerLinkClick(this)"></li>
+                    <li class="colorPicker" style="background-color:#000000;" onclick="bgColorPickerLinkClick(this)"></li>
+                </ul>
+                <span id="bgColorBox" class="colorBox"></span>
+                <input id="bgColorHexText" class="colorHexText" type="text" value="#000000" maxlength="7"/>
+                <button class="colorPickerBtn" onclick="bgColorPickerBtnClick();">입력</button>
+                <input id="bgPaletteBtn" class="paletteBtn" type="checkbox" onclick="paletteBtnClick(this, 'bgPaletteArea', 'bgPaletteLabel', 'bgPaletteBtnImg');"/>       
+                <label id="bgPaletteLabel" for="bgPaletteBtn" class="paletteLabel">더보기<img id="bgPaletteBtnImg" class="paletteLabel" src="/static/img/sort-down.png"/></label>  
+            </div>
+            <div id="bgPaletteArea" class="paletteArea" style="display: none;">
+                <div class="paletteBorder">
+                    <canvas id="bgPalette" class="palette"></canvas>
+                    <canvas id="bgBar" class="bar"></canvas>
+                </div>
+            </div>
+        </div>      
+    </div>
+    <div class='buttonBox' style="width:95px;">
+        <input id="fontBtn" class="font" type="button" onclick="showDiv('fontList', 'bgColorPickerArea', 'colorPickerArea')" value="Font">
+        <label for='fontBtn'><img class="fontDownArrow" src="/static/img/sort-down.png"/></label>
+        
+
+        <div id="fontList" class="fontList">
+            <ul>
+                <li class="fontList" onclick="fontChange(this);" style="font-family: 고딕;">고딕</li>
+                <li class="fontList" onclick="fontChange(this);" style="font-family: 굴림;">굴림</li>
+                <li class="fontList" onclick="fontChange(this);" style="font-family: 바탕;">바탕</li>
+                <li class="fontList" onclick="fontChange(this);" style="font-family: 돋움;">돋움</li>
+                <li class="fontList" onclick="fontChange(this);" style="font-family: 궁서;">궁서</li>
+                <li class="fontList" onclick="fontChange(this);" style="font-family: monospace;">Monospace</li>
+                <li class="fontList" onclick="fontChange(this);" style="font-family: arial;">Arial</li>                
+            </ul>
             <script>
-                function paletteBtnClick() {
-                    if(document.getElementById('paletteBtn').checked == true) {
-                        document.getElementById('paletteLabel').innerHTML = '접기<img id="paletteBtnImg" class="paletteLabel">';                    
-                        document.getElementById('paletteBtnImg').src = "/static/img/sort-up.png"; 
-                        document.getElementById('paletteArea').style.display = "block";                        
-                    }
-                    else {
-                        document.getElementById('paletteLabel').innerHTML = '더보기<img id="paletteBtnImg" class="paletteLabel">';
-                        document.getElementById('paletteBtnImg').src = "/static/img/sort-down.png"; 
-                        document.getElementById('paletteArea').style.display = "none";                        
-                    }
+                function fontChange(self) {
+                    document.getElementById('fontBtn').value = self.textContent;                    
+                    htmlEdit('contents', 'fontName', self.textContent);
                 }
             </script>
         </div>
     </div>
+    
 </div>
 <div class='contents'>
     <iframe id='contents' class='contents' frameborder='0'></iframe>

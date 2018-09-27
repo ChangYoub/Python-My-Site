@@ -76,11 +76,11 @@ input.editButton[type="button"] + label img {
     border: solid 2px transparent;
 }
 
-input[type="button"]:active  + label img {
+input.editBtn[type="button"]:active  + label img {
     background-color: #E5E5E5;
 }
 
-input[type="button"]:hover + label img {
+input.editBtn[type="button"]:hover + label img {
     background-color: #D3D3D3;
     cursor:pointer;
 }
@@ -139,7 +139,7 @@ div.colorPickerArea {
     float: left;  
     position: relative;
     top: 2px;    
-    border: 1px solid black; 
+    border: 1px solid #B9B9B9; 
     width: 200px;    
     z-index: 1000;
     background-color:#F9F9F9;    
@@ -162,7 +162,7 @@ li.colorPicker {
 
 span.colorBox {
     float: left;
-    margin-top: 6px;
+    margin-top: 5px;
     border: solid 1px #D8D8D8;
     width: 66px;    
     height: 15px;     
@@ -218,7 +218,7 @@ div.paletteArea {
     bottom: 4px;    
     width: 182px;
     height: 130px;
-    padding: 8px;
+    padding: 0 8px 8px 8px;
     background-color:#F9F9F9;     
 }
 
@@ -231,14 +231,68 @@ div.paletteBorder {
 canvas.palette {
     float: left;
     margin-right: 5px;    
-    width: 141px;  
-    height: 120px;  
+    width: 145px;  
+    height: 122px;  
     cursor: crosshair;
 }
 
 canvas.bar {
     float: left;
     width: 20px;
-    height: 120px;  
+    height: 122px;  
     cursor: crosshair;    
+}
+
+button.bgColorPickerBtn {
+    float: left;
+    margin: 0 0px 2px 2px;
+    padding: 0 0 10px 2px;    
+    border: none; 
+    color: white;    
+    width: 58px;
+    height: 18px; 
+    text-align: left;
+    font-size: 13px;
+}
+
+button.bgColorPickerBtn:hover {
+    text-decoration: underline;
+}
+
+input.font { 
+    float: left; 
+    padding-left: 10px;
+    border: none;
+    width: 85%;
+    height: 100%;    
+    background: transparent;
+    text-align: left;  
+}
+
+img.fontDownArrow {    
+    position: relative;
+    top: 2px;
+    width: 5px; 
+    height: 8px;   
+    padding: 0 5px 0 4px; 
+}
+
+div.fontList {
+    display: none;
+    position: relative; 
+    top: 10px;
+    border: solid 1px #D8D8D8;   
+}
+
+ul {
+    list-style: none;
+    padding: 0px; 
+    margin: 0px;
+}
+
+li.fontList {
+    padding: 4px;
+    background-color: #FAFAFA;
+    text-align: center;  
+    font-size:13px;        
 }
